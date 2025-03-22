@@ -66,7 +66,7 @@ export default function useGameState() {
 
         // Atualiza o estado dos jogadores
         setPlayers(players.map(p => (p.id === updatedPlayer.id ? updatedPlayer : p)));
-        setDeck(new Deck(deck.cards)); // Atualiza o estado do baralho
+        setDeck(new Deck()); // Atualiza o estado do baralho
     };
 
     const stand = (dealer: Dealer) => {
