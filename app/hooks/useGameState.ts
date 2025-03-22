@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react';
 import Deck from '../models/Deck';
 import { Dealer, Hand, Player } from "@/utils/types";
@@ -6,6 +8,7 @@ export default function useGameState() {
     const [deck, setDeck] = useState<Deck>(new Deck());
     const [players, setPlayers] = useState<Player[]>([]);
     const [dealer, setDealer] = useState<Dealer>({ id: "", hand: [] });
+    const [isGameLost, setIsGameLost] = useState(false);
 
     const createGameState = (dealer: Dealer, players: Player[]) => {
         const initialDeck = new Deck();
@@ -61,20 +64,32 @@ export default function useGameState() {
             return;
         }
 
-        // Cria uma cópia do jogador e adiciona a nova carta à mão
         const updatedPlayer = { ...player, hand: [...player.hand, drewCard] };
 
-        // Atualiza o estado dos jogadores
+        if(!isHandPossible) {
+            setIsGameLost(true)
+            return
+        }
+
         setPlayers(players.map(p => (p.id === updatedPlayer.id ? updatedPlayer : p)));
-        setDeck(new Deck()); // Atualiza o estado do baralho
+        setDeck(new Deck());
     };
 
+    const isHandPossible = (hand: Hand): boolean => {
+
+    }
+
+    const resetGameState = (): void => {
+        setDeck(new Deck());
+        setPlayers([])
+        setDealer({ id: "", hand: [] })
+        setIsGameLost(false)
+
+        createGameState(dealer, players)
+    }
+
     const stand = (dealer: Dealer) => {
-        const drewCard = deck.drawCard();
-        if (!drewCard) {
-            alert("O baralho está vazio!");
-            return;
-        }
+        throw new Error("Not implemented");
     };
 
     return {
@@ -82,6 +97,8 @@ export default function useGameState() {
         hit,
         stand,
         players,
-        dealer
+        dealer,
+        isGameLost,
+        resetGameState
     };
 }

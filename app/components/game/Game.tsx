@@ -2,7 +2,6 @@
 import useGameState from "@/app/hooks/useGameState";
 import {useState} from "react";
 import {Player} from "@/utils/types";
-import IncrementCounter from "@/app/components/IncrementCounter";
 import VisualGame from "@/app/components/game/VisualGame";
 import BackgroundPattern from "@/app/components/BackgroundPattern";
 import {Work_Sans} from "next/font/google";
@@ -16,7 +15,7 @@ const fontaic = Work_Sans({
 function Game() {
     const [gameStarted, setGameStarted] = useState(false);
     const [playerQuantity, setPlayerQuantity] = useState(1);
-    const {createGameState, hit, stand, players, dealer} = useGameState()
+    const {createGameState, hit, stand, players, dealer, isGameLost, resetGame} = useGameState()
     const uninitializedPlayers: Player[] = []
 
         function startGame() {
@@ -31,7 +30,7 @@ function Game() {
     return (
         <div className="min-h-screen">
             {gameStarted ? (
-                    <VisualGame hit={hit} stand={stand} players={players} dealer={dealer}/>
+                    <VisualGame hit={hit} stand={stand} players={players} dealer={dealer} isGameLost={isGameLost} resetGame={resetGame}/>
             ): (
                 <div className="min-h-screen bg-gradient-to-b from-blackjack-board to-green-800 text-white">
                     <div className="min-h-screen relative flex items-center justify-center overflow-hidden">
