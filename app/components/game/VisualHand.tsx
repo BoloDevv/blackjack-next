@@ -10,7 +10,7 @@ type HandProps = {
 
 export default function VisualHand({hand}: HandProps) {
     return (
-        <div className="hand">
+        <div className="flex h-1/4">
             {hand.map((card, index) => (
                 <VisualCard key={index} card={card}/>
             ))}

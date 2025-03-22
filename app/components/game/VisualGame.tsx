@@ -17,10 +17,10 @@ function VisualGame(props: visualGameProps) {
         return players.map((player: Player, index) => {
             return (
                 <div key={index} className="flex flex-col justify-center items-center">
-                    <h2 className="">{player.name}</h2>
-                    <div className="flex relative items-center">
+                    <h2 className="text-2xl mb-4 text-main">{player.name}</h2>
+                    <div className="flex relative flex-col items-center">
                         <VisualHand hand={player.hand} key={index}/>
-                        <div className="flex flex-col w-full h-full">
+                        <div className="flex h-full w-full">
                             <GameActionButton onClick={() => hit(player)} action="hit"/>
                             <GameActionButton onClick={() => stand(player)} action="stand"/>
                         </div>
@@ -31,13 +31,13 @@ function VisualGame(props: visualGameProps) {
     }
 
     return (
-        <div className="bg-blackjack-board min-h-screen relative flex flex-col justify-center items-center">
-            <div className="h-1/2 w-full flex flex-col justify-center items-center">
-                <h2 className="text-2xl text-main">Dealer</h2>
+        <div className="bg-blackjack-board h-screen w-full relative flex flex-col justify-center items-center">
+            <div className="flex relative flex-col justify-center items-center h-1/2 w-1/4">
+                <h2 className="text-2xl mb-4 text-main">Dealer</h2>
                 <VisualHand hand={dealer.hand}/>
             </div>
-            <div className="h-full w-full flex justify-center items-cente">
-                    {renderPlayersHands()}
+            <div className="flex relative justify-center items-center h-1/2">
+                {renderPlayersHands()}
             </div>
         </div>
     );

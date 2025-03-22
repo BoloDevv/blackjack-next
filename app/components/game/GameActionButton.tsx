@@ -9,7 +9,7 @@ interface GameActionButtonProps {
 function GameActionButton(props: GameActionButtonProps) {
     const {onClick, action} = props;
     return (
-        <button onClick={onClick} className="w-2 h-2 mx-8">{action}</button>
+        <button onClick={onClick} className="bg-main-btn rounded-sm w-[50px] h-[50px] m-8 cursor-pointer hover:bg-yellow-400 border">{action}</button>
     );
 }
 

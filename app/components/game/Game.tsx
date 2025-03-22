@@ -31,9 +31,7 @@ function Game() {
     return (
         <div className="min-h-screen">
             {gameStarted ? (
-                <div>
                     <VisualGame hit={hit} stand={stand} players={players} dealer={dealer}/>
-                </div>
             ): (
                 <div className="min-h-screen bg-gradient-to-b from-blackjack-board to-green-800 text-white">
                     <div className="min-h-screen relative flex items-center justify-center overflow-hidden">

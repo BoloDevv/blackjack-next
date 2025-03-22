@@ -1,7 +1,7 @@
-// components/Card.tsx
 "use client";
 
 import {Card} from "@/utils/types";
+import Image from "next/image";
 
 type CardProps = {
     card: Card
@@ -20,11 +20,10 @@ export const getCardValue = (card: Card): number => {
 };
 
 export default function VisualCard({card}: CardProps) {
-
+    const url = `/Flat Playing Cards Set/${card.suit}/${card.rank}.png`
     return (
-        <div className="card">
-            <div className="card-value">{getCardValue(card)}</div>
-            <div className="card-suit">{card.suit}</div>
+        <div className="mx-1 w-full h-full">
+            <Image src={url} width={90} height={90} alt="card image" className="antialiased"/>
         </div>
     );
 }

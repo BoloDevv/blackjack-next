@@ -38,15 +38,17 @@ export default function useGameState() {
     const hit = (player: Player) => {
         const drewCard = deck.drawCard();
         if (!drewCard) {
-            return null
+            return
         }
+
+        setDeck(deck)
         player.hand.push(drewCard)
     };
 
     const stand = (dealer: Dealer) => {
         const drewCard = deck.drawCard();
         if (!drewCard) {
-            return null
+            return
         }
         dealer.hand.push(drewCard)
     };
