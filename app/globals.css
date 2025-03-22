@@ -1,134 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* styles/globals.css */
-/* styles/globals.css */
-body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #ecf0f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+@plugin 'tailwindcss-motion';
+
+@theme {
+    --font-work-sans: 'Work Sans', sans-serif;
+    --color-blackjack-board: var(--color-green-900);
+    --color-main: var(--color-yellow-400);
+    --color-secondary: white;
+    --color-main-btn: var(--color-yellow-500);
 }
 
-.container {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+
+@utility bold-by-shadow {
+    text-shadow: 0 0 1px currentColor,
+    0 0 1px currentColor,
+    0 0 1px currentColor;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #f1c40f;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+@utility text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ecf0f1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.hand {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-
-.card {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 1rem;
-  width: 80px;
-  height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.card-value {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.card-suit {
-  font-size: 1.2rem;
-  color: #e74c3c;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-button {
-  background: linear-gradient(145deg, #f1c40f, #f39c12);
-  border: none;
-  border-radius: 5px;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  color: #2c3e50;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-}
-
-button:disabled {
-  background: linear-gradient(145deg, #bdc3c7, #95a5a6);
-  cursor: not-allowed;
-}
-
-.result {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  color: #000000;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Animação de fundo */
-@keyframes gradientBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-body {
-  background: linear-gradient(-45deg, #2c3e50, #34495e, #4a69bd, #6a89cc);
-  background-size: 400% 400%;
-  animation: gradientBackground 15s ease infinite;
-}

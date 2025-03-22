@@ -22,6 +22,9 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/Deck.tsx", "app/components/Game.tsx", "app/components/Hand.tsx", "app/chumbamento/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts",
+    "app/models/Deck",
+    "app/hooks/useGameState.ts",
+    "app/components/game/VisualHand.tsx", "app/chumbamento/page.jsx"],
   "exclude": ["node_modules"]
 }
