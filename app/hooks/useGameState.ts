@@ -3,8 +3,12 @@
 import { useState } from 'react';
 import Deck from '../models/Deck';
 import { Dealer, Hand, Player } from "@/utils/types";
+import {getCardValue} from "@/app/components/game/VisualCard";
 
 export default function useGameState() {
+
+    const LIMIT_HAND_SIZE = 21;
+
     const [deck, setDeck] = useState<Deck>(new Deck());
     const [players, setPlayers] = useState<Player[]>([]);
     const [dealer, setDealer] = useState<Dealer>({ id: "", hand: [] });
@@ -66,17 +70,35 @@ export default function useGameState() {
 
         const updatedPlayer = { ...player, hand: [...player.hand, drewCard] };
 
-        if(!isHandPossible) {
+        setPlayers(players.map(p => (p.id === updatedPlayer.id ? updatedPlayer : p)));
+        setDeck(new Deck());
+
+        if(!isHandPossible(updatedPlayer.hand)) {
+            console.log("Perdeu blud")
             setIsGameLost(true)
             return
         }
-
-        setPlayers(players.map(p => (p.id === updatedPlayer.id ? updatedPlayer : p)));
-        setDeck(new Deck());
     };
 
     const isHandPossible = (hand: Hand): boolean => {
+        const aces = hand.filter(c => c.rank === "A")
+        const withoutAces = hand.filter(c => c.rank !== "A")
 
+        let total = withoutAces.reduce((sum, card) => sum + getCardValue(card), 0);
+
+        if(total > LIMIT_HAND_SIZE) {
+            return false
+        }
+
+        aces.forEach((card) => {
+            if(total <= 10) {
+                total += getCardValue(card);
+            } else {
+                total += 1
+            }
+        })
+
+        return total <= LIMIT_HAND_SIZE;
     }
 
     const resetGameState = (): void => {

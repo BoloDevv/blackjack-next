@@ -15,7 +15,7 @@ const fontaic = Work_Sans({
 function Game() {
     const [gameStarted, setGameStarted] = useState(false);
     const [playerQuantity, setPlayerQuantity] = useState(1);
-    const {createGameState, hit, stand, players, dealer, isGameLost, resetGame} = useGameState()
+    const {createGameState, hit, stand, players, dealer, isGameLost, resetGameState} = useGameState()
     const uninitializedPlayers: Player[] = []
 
         function startGame() {
@@ -30,7 +30,7 @@ function Game() {
     return (
         <div className="min-h-screen">
             {gameStarted ? (
-                    <VisualGame hit={hit} stand={stand} players={players} dealer={dealer} isGameLost={isGameLost} resetGame={resetGame}/>
+                    <VisualGame hit={hit} stand={stand} players={players} dealer={dealer} isGameLost={isGameLost} resetGame={resetGameState}/>
             ): (
                 <div className="min-h-screen bg-gradient-to-b from-blackjack-board to-green-800 text-white">
                     <div className="min-h-screen relative flex items-center justify-center overflow-hidden">

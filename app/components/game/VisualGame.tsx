@@ -2,7 +2,7 @@ import React from 'react';
 import VisualHand from "@/app/components/game/VisualHand";
 import {Dealer, Player} from "@/utils/types";
 import GameActionButton from "@/app/components/game/GameActionButton";
-import GameWidowDialog from "@/app/components/game/GameWidowDialog";
+import GameLoseWindow from "@/app/components/game/GameLoseWindow";
 
 interface visualGameProps {
     hit: (player: Player) => void;
@@ -37,7 +37,7 @@ function VisualGame(props: visualGameProps) {
 
         <div className="bg-blackjack-board h-screen w-full relative flex flex-col justify-center items-center">
             {isGameLost ? (
-                <GameWidowDialog resetGame={resetGame}/>
+                <GameLoseWindow resetGame={resetGame}/>
             ) : null}
             <div className="flex relative flex-col justify-center items-center h-1/2 w-1/4">
                 <h2 className="text-2xl mb-4 text-main">Dealer</h2>
