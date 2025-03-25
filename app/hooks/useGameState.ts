@@ -16,9 +16,6 @@ export default function useGameState() {
 
     const createGameState = (dealer: Dealer, players: Player[]) => {
         const initialDeck = new Deck();
-        if(!deck){
-            return
-        }
 
         setDeck(initialDeck);
 
@@ -27,15 +24,7 @@ export default function useGameState() {
     };
 
     const initializeHand = (player: Player | Dealer, initialDeck: Deck) => {
-        if(!deck) {
-            return
-        }
-
         const initialHand: Hand = [];
-
-        if(!deck){
-            return
-        }
 
         for (let i = 0; i < 2; i++) {
             const drewCard = initialDeck.drawCard();
@@ -47,9 +36,6 @@ export default function useGameState() {
     };
 
     const initializePlayers = (players: Player[], initialDeck: Deck) => {
-        if(!deck){
-            return
-        }
         const updatedPlayers = players.map(player => {
             initializeHand(player, initialDeck);
             return player;
@@ -59,6 +45,7 @@ export default function useGameState() {
 
     const initializeDealer = (dealer: Dealer, initialDeck: Deck) => {
         initializeHand(dealer, initialDeck);
+        dealer.hand[1].isFlipped = true
         setDealer(dealer);
     };
 
@@ -74,7 +61,6 @@ export default function useGameState() {
         setDeck(new Deck());
 
         if(!isHandPossible(updatedPlayer.hand)) {
-            console.log("Perdeu blud")
             setIsGameLost(true)
             return
         }
