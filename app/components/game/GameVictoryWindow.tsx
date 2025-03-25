@@ -50,19 +50,19 @@ function GameLoseWindow(props: GameWidowDialogProps) {
                     initial="hidden"
                     animate="visible"
                     transition={{delay: 0.4, duration: 0.6}}>
-          <span className="text-transparent font-bold bg-clip-text bg-gradient-to-r from-red-600 to-red-500">
-            Derrota!
+          <span className="text-transparent font-bold bg-clip-text bg-gradient-to-r from-green-600 to-green-500">
+            Vitória!
           </span>
                 </motion.h1>
                 <motion.button
                     onClick={props.resetGame}
-                    className="group relative inline-flex items-center gap-2 px-8 py-4 bg-red-500 hover:bg-red-400 text-black font-bold text-lg rounded-full hover:duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer"
+                    className="group relative inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-400 text-black font-bold text-lg rounded-full hover:duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer"
                     variants={innerVariants}
                     initial="hidden"
                     animate="visible"
                     transition={{delay: 0.4, duration: 0.6}}
                 >
-                    Tentar novamente
+                    Jogar novamente
                 </motion.button>
             </motion.div>
         </motion.div>

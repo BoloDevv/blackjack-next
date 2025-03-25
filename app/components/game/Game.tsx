@@ -15,7 +15,7 @@ export const fontaic = Work_Sans({
 function Game() {
     const [gameStarted, setGameStarted] = useState(false);
     const [playerQuantity, setPlayerQuantity] = useState(1);
-    const {createGameState, hit, stand, players, dealer, isGameLost, resetGameState} = useGameState()
+    const {createGameState, hit, stand, players, dealer, isGameOver,isGameWin, resetGameState} = useGameState()
     const uninitializedPlayers: Player[] = []
 
         function startGame() {
@@ -30,7 +30,7 @@ function Game() {
     return (
         <div className="min-h-screen">
             {gameStarted ? (
-                    <VisualGame hit={hit} stand={stand} players={players} dealer={dealer} isGameLost={isGameLost} resetGame={resetGameState}/>
+                    <VisualGame hit={hit} stand={stand} players={players} dealer={dealer} isGameOver={isGameOver} isGameWin={isGameWin} resetGame={resetGameState}/>
             ): (
                 <div className="min-h-screen bg-gradient-to-b from-blackjack-board to-green-800 text-white">
                     <div className="min-h-screen relative flex items-center justify-center overflow-hidden">
@@ -41,11 +41,8 @@ function Game() {
                             </h1>
                             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">Sinta a adrenalina do 21 na ponta dos seus dedos. </p>
                             <button
-                                className="group relative inline-flex items-center gap-2 px-8 py-4 bg-main-btn hover:bg-yellow-400
-                     text-black font-bold text-lg rounded-full transition-all duration-300
-                     transform hover:scale-105 hover:shadow-xl cursor-pointer"
-                                onClick={() => startGame()}
-                            >
+                                className="group relative inline-flex items-center gap-2 px-8 py-4 bg-main-btn hover:bg-yellow-400text-black font-bold text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer"
+                                onClick={() => startGame()}>
                                 <span>Jogar Agora</span>
                                 <PlayCircle className="w-6 h-6 group-hover:animate-pulse" />
                             </button>

@@ -1,8 +1,8 @@
 import React from 'react';
-import {PokerAction} from "@/utils/types";
+import {BlackjackAction} from "@/utils/types";
 
 interface GameActionButtonProps {
-    action: PokerAction;
+    action: BlackjackAction;
     onClick: () => void;
 }
 

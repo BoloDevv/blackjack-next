@@ -3,18 +3,20 @@ import VisualHand from "@/app/components/game/VisualHand";
 import {Dealer, Player} from "@/utils/types";
 import GameActionButton from "@/app/components/game/GameActionButton";
 import GameLoseWindow from "@/app/components/game/GameLoseWindow";
+import GameVictoryWindow from "@/app/components/game/GameVictoryWindow";
 
 interface visualGameProps {
     hit: (player: Player) => void;
-    stand: (dealer: Dealer) => void;
+    stand: (player: Player) => void;
     players: Player[];
     dealer: Dealer;
-    isGameLost: boolean;
+    isGameOver: boolean;
+    isGameWin: boolean;
     resetGame: () => void;
 }
 
 function VisualGame(props: visualGameProps) {
-    const {hit, stand, players, dealer, isGameLost, resetGame} = props;
+    const {hit, stand, players, dealer, isGameOver, isGameWin, resetGame} = props;
 
     const renderPlayersHands = () => {
         return players.map((player: Player, index) => {
@@ -36,8 +38,10 @@ function VisualGame(props: visualGameProps) {
     return (
 
         <div className="bg-blackjack-board h-screen w-full relative flex flex-col justify-center items-center">
-            {isGameLost ? (
+            {isGameOver ? (
                 <GameLoseWindow resetGame={resetGame}/>
+            ) : isGameWin ? (
+                <GameVictoryWindow resetGame={resetGame}/>
             ) : null}
             <div className="flex relative flex-col justify-center items-center h-1/2 w-1/4">
                 <h2 className="text-2xl mb-4 text-main font-bold">Dealer</h2>

@@ -4,7 +4,7 @@ export type Card = { suit: CardSuit; rank: CardRank; isFlipped: boolean };
 
 export type Hand = Card[]
 
-export type PokerAction = 'hit' | 'stand' | 'split'
+export type BlackjackAction = 'hit' | 'stand' | 'split'
 
 export interface Player {
     id: string;
