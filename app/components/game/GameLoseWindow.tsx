@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {fontaic} from "@/app/components/game/Game";
 import {motion, useAnimation} from "framer-motion";
 
 interface GameWidowDialogProps {
@@ -12,24 +11,29 @@ function GameLoseWindow(props: GameWidowDialogProps) {
     const innerControls = useAnimation();
 
     const innerVariants = {
-        hidden: { opacity: 0, x: 100 },
+        hidden: { opacity: 0, x: 40 },
         visible: { opacity: 1, x: 0 }
     };
 
     useEffect(() => {
-        async function sequence() {
+        async function firstAnimation() {
             // Primeiro anima o container
             await containerControls.start({
                 opacity: [0, 0.9],
                 transition: { duration: 1 }
             });
+        }
+
+        async function secondAnimation() {
             // Quando a animação do container terminar, anima o inner
             await innerControls.start({
                 opacity: 1,
-                transition: { duration: 1 }
+                transition: { duration: 2 }
             });
         }
-        sequence();
+
+        firstAnimation()
+        secondAnimation()
     }, [containerControls, innerControls]);
 
     return (
@@ -55,11 +59,11 @@ function GameLoseWindow(props: GameWidowDialogProps) {
                 </motion.h1>
                 <motion.button
                     onClick={props.resetGame}
-                    className="group relative inline-flex items-center gap-2 px-8 py-4 bg-red-500 hover:bg-red-400 text-black font-bold text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer"
+                    className="group relative inline-flex items-center gap-2 px-8 py-4 bg-red-500 hover:bg-red-400 text-black font-bold text-lg rounded-full hover:duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer"
                     variants={innerVariants}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 0.4, duration: 0.5 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
                 >
                     Tentar novamente
                 </motion.button>
