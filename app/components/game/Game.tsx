@@ -7,7 +7,7 @@ import BackgroundPattern from "@/app/components/BackgroundPattern";
 import {Work_Sans} from "next/font/google";
 import {PlayCircle} from "lucide-react";
 
-const fontaic = Work_Sans({
+export const fontaic = Work_Sans({
     subsets: ['latin'],
     variable: '--font-worksans',
 });
